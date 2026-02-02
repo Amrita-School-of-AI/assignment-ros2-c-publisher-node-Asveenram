@@ -12,11 +12,8 @@ class PublisherNode : public rclcpp::Node
 public:
   PublisherNode() : Node("publisher_node"), counter_(0)
   {
-    // Create publisher
-    publisher_ = this->create_publisher<std_msgs::msg::String>(
-      "/counter", 10);
+    publisher_ = this->create_publisher<std_msgs::msg::String>("/counter", 10);
 
-    // Create timer (500 ms)
     timer_ = this->create_wall_timer(
       500ms,
       std::bind(&PublisherNode::timer_callback, this));
